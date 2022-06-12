@@ -1,9 +1,8 @@
-#include "window.h"
+#include "engine.h"
 
 int main()
 {
-    auto* window = new Window();
-    window->init_window();
-    window->create_window();
-    return window->loop();
+    auto* engine = new Engine();
+    engine->init();
+    return engine->loop();
 }
