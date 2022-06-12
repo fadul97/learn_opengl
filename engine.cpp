@@ -23,5 +23,18 @@ void Engine::init()
 
 int Engine::loop()
 {
-    return window->loop();
+    do
+    {
+        if (glfwGetKey(window->get_glfw_window(), GLFW_KEY_ESCAPE) == GLFW_PRESS)
+            glfwSetWindowShouldClose(window->get_glfw_window(), true);
+
+        glClearColor(0.5f, 0.3f, 0.3f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        glfwSwapBuffers(window->get_glfw_window());
+
+        glfwPollEvents();
+    } while(!glfwWindowShouldClose(window->get_glfw_window()));
+
+    return 0;
 }
