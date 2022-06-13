@@ -6,7 +6,7 @@
 #define LEARN_OPENGL_ENGINE_H
 
 #include "application.h"
-#include "window.h"
+#include "platform/window.h"
 
 class Application;
 

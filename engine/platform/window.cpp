@@ -64,9 +64,6 @@ int Window::loop()
         if (glfwGetKey(m_glfw_window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
             glfwSetWindowShouldClose(m_glfw_window, true);
 
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-
         glfwSwapBuffers(m_glfw_window);
 
         glfwPollEvents();

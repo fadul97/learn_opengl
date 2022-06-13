@@ -5,7 +5,7 @@
 #ifndef LEARN_OPENGL_APPLICATION_H
 #define LEARN_OPENGL_APPLICATION_H
 
-#include "window.h"
+#include "platform/window.h"
 #include "engine.h"
 
 class Application

@@ -1,4 +1,4 @@
-#include "learn_opengl.h"
+#include "engine/learn_opengl.h"
 
 class MyApp : public Application
 {
@@ -21,7 +21,7 @@ void MyApp::update()
 
 void MyApp::draw()
 {
-    glClearColor(0.6f, 0.6f, 0.7f, 1.0f);
+    glClearColor(0.8f, 0.5f, 0.9f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 }
 

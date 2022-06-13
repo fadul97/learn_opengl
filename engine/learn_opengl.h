@@ -5,7 +5,8 @@
 #ifndef LEARN_OPENGL_H
 #define LEARN_OPENGL_H
 
-#include "window.h"
+#include <glad/glad.h>
+#include "platform/window.h"
 #include "engine.h"
 #include "application.h"
 
