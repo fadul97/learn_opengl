@@ -3,7 +3,7 @@ project(learn_opengl)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(learn_opengl main.cpp glad.c window.h window.cpp engine.h engine.cpp app.h app.cpp learn_opengl.h)
+add_executable(learn_opengl main.cpp glad.c window.h window.cpp engine.h engine.cpp application.h application.cpp learn_opengl.h)
 
 if(UNIX)
     target_link_libraries(learn_opengl -lglfw -lGL -ldl)

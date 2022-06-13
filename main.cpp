@@ -1,6 +1,6 @@
 #include "learn_opengl.h"
 
-class MyApp : public App
+class MyApp : public Application
 {
 public:
     void init() override;

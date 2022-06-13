@@ -7,6 +7,6 @@
 
 #include "window.h"
 #include "engine.h"
-#include "app.h"
+#include "application.h"
 
 #endif //LEARN_OPENGL_H
