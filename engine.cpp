@@ -31,13 +31,7 @@ int Engine::loop()
     {
         m_app->update();
 
-        if (glfwGetKey(m_window->get_glfw_window(), GLFW_KEY_ESCAPE) == GLFW_PRESS)
-            glfwSetWindowShouldClose(m_window->get_glfw_window(), true);
-
         m_app->draw();
-
-        glClearColor(0.5f, 0.6f, 0.8f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
 
         glfwSwapBuffers(m_window->get_glfw_window());
 
