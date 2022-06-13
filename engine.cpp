@@ -4,37 +4,47 @@
 
 #include "engine.h"
 
-Engine::Engine()
-{
-    window = nullptr;
-}
+Window* Engine::m_window = nullptr;
+App* Engine::m_app = nullptr;
+
+Engine::Engine() = default;
 
 Engine::~Engine()
 {
-    delete window;
+    delete m_window;
 }
 
-void Engine::init()
+void Engine::init(App* app)
 {
-    window = new Window();
-    window->init_window();
-    window->create_window();
+    m_window = new Window();
+    m_window->init_window();
+    m_window->create_window();
+
+    m_app = app;
 }
 
 int Engine::loop()
 {
+    m_app->init();
+
     do
     {
-        if (glfwGetKey(window->get_glfw_window(), GLFW_KEY_ESCAPE) == GLFW_PRESS)
-            glfwSetWindowShouldClose(window->get_glfw_window(), true);
+        m_app->update();
 
-        glClearColor(0.5f, 0.3f, 0.3f, 1.0f);
+        if (glfwGetKey(m_window->get_glfw_window(), GLFW_KEY_ESCAPE) == GLFW_PRESS)
+            glfwSetWindowShouldClose(m_window->get_glfw_window(), true);
+
+        m_app->draw();
+
+        glClearColor(0.5f, 0.3f, 0.8f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        glfwSwapBuffers(window->get_glfw_window());
+        glfwSwapBuffers(m_window->get_glfw_window());
 
         glfwPollEvents();
-    } while(!glfwWindowShouldClose(window->get_glfw_window()));
+    } while(!glfwWindowShouldClose(m_window->get_glfw_window()));
+
+    m_app->finalize();
 
     return 0;
 }

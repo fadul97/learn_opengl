@@ -5,19 +5,22 @@
 #ifndef LEARN_OPENGL_ENGINE_H
 #define LEARN_OPENGL_ENGINE_H
 
+#include "app.h"
 #include "window.h"
+
+class App;
 
 class Engine
 {
-private:
-    Window *window;
-
 public:
+    static Window* m_window;
+    static App* m_app;
+
     Engine();
     ~Engine();
 
-    void init();
-    int loop();
+    static void init(App* app);
+    static int loop();
 };
 
 #endif //LEARN_OPENGL_ENGINE_H

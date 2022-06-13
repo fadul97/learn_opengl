@@ -4,7 +4,7 @@
 
 #include "app.h"
 
-//Window*& App::m_window = Engine::m_window;
+Window*& App::m_window = Engine::m_window;
 
 App::App() = default;
 
