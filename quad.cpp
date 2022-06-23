@@ -4,14 +4,19 @@
 
 #include "triangle.h"
 
-float Triangle::vertices[12] = {
-        0.0f, 0.5f, 0.0f,
+float Quad::vertices[12] = {
+        0.5f, 0.5f, 0.0f,
         0.5f, -0.5f, 0.0f,
         -0.5f, -0.5f, 0.0f,
         -0.5f, 0.5f, 0.0f
 };
 
-Triangle::Triangle()
+int Quad::indices[6] = {
+        0, 1, 3,
+        1, 2, 3
+};
+
+Quad::Quad()
 {
     m_vertex_shader_source = nullptr;
     m_fragment_shader_source = nullptr;
@@ -22,15 +27,14 @@ Triangle::Triangle()
 
     m_vao = 0;
     m_vbo = 0;
-
-    m_polygon_mode = GL_FILL;
+    m_ebo = 0;
 
     m_success = 0;
 }
 
-Triangle::~Triangle() = default;
+Quad::~Quad() = default;
 
-void Triangle::init()
+void Quad::init()
 {
     m_vertex_shader_source = "#version 330 core\n"
                              "layout (location = 0) in vec3 aPos;\n"
@@ -90,21 +94,32 @@ void Triangle::init()
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float ), (void*)nullptr);
     glEnableVertexAttribArray(0);
 
+    glGenBuffers(1, &m_ebo);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ebo);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+    glEnableVertexAttribArray(0);
+
     glBindVertexArray(0);
+
+//    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 }
 
-void Triangle::draw()
+void Quad::draw()
 {
     glUseProgram(m_shader_program);
     glBindVertexArray(m_vao);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
 
-void Triangle::update()
+void Quad::update()
 {
 
 }
 
-void Triangle::finalize()
+void Quad::finalize()
 {
+    glDeleteVertexArrays(1, &m_vao);
+    glDeleteBuffers(1, &m_vbo);
+    glDeleteBuffers(1, &m_ebo);
+    glDeleteProgram(m_shader_program);
 }
