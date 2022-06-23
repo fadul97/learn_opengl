@@ -3,7 +3,7 @@ project(learn_opengl)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(learn_opengl main.cpp)
+add_executable(learn_opengl main.cpp triangle.h triangle.cpp)
 
 add_subdirectory(engine)
 
