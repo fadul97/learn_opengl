@@ -7,7 +7,7 @@
 
 #include "engine/learn_opengl.h"
 
-class Quad : public Application
+class Triangle : public Application
 {
 private:
     const char* m_vertex_shader_source;
@@ -19,17 +19,15 @@ private:
 
     unsigned int m_vbo;
     unsigned int m_vao;
-    unsigned int m_ebo;
 
     int m_success;
     char m_info_log[512]{};
 
-    static float vertices[12];
-    static int indices[6];
+    static float vertices[18];
 
 public:
-    Quad();
-    ~Quad() override;
+    Triangle();
+    ~Triangle() override;
 
     void init() override;
     void draw() override;
